@@ -13,7 +13,7 @@ function Get-PBCohesityUser {
   [PoshBot.BotCommand(
     Command = $false,
     TriggerType = 'regex',
-    Regex = 'get Cohesity user'
+    Regex = '(?i)get\sCohesity\suser'
   )]
   [CmdletBinding()]
   param(
@@ -23,22 +23,38 @@ function Get-PBCohesityUser {
     [Parameter(ValueFromRemainingArguments = $true)]
     [object[]]$Arguments
   )
-  try {
+  
+    try {
     $creds = [pscredential]::new($Connection.Username,($Connection.Password | ConvertTo-SecureString -AsPlainText -Force))
     $null = Connect-CohesityCluster -Server $Connection.Server -Credential $creds
-    $objects = Get-CohesityUser
-    $ResponseSplat = @{
-      Text = Format-PBCohesityObject -Object $objects -FunctionName $MyInvocation.MyCommand.Name
-      AsCode = $true
-    }
+  } 
+  catch {
+    New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)
+    New-PoshBotCardResponse -Title "Cohesity cluster connection error"
+    $string_err = $_ | Out-String
+    $string_err = $string_err.Split([Environment]::NewLine) | Select -First 1
+    New-PoshBotCardResponse -Text $string_err
+    break
 
-    New-PoshBotTextResponse @ResponseSplat
+  }
+  try {
+    $objects = Get-CohesityUser
   }
   catch {
     New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)
-
+    New-PoshBotCardResponse -Title "Cohesity 'Get-CohesityUser' API call error "
     $string_err = $_ | Out-String
+    $string_err = $string_err.Split([Environment]::NewLine) | Select -First 1
     New-PoshBotCardResponse -Text $string_err
+    break
 
   }
+    $output = @()
+    $objects | ForEach-Object {
+    $NonEmptyProperties = $_.psobject.Properties | Where-Object {$_.Value} | Select-Object -ExpandProperty Name
+    $element = $_ | Select-Object -Property $NonEmptyProperties
+    $output += $element
+  }
+   New-PoshBotCardResponse -Text ($output | Format-List -Property * | Out-String)
+  
 }

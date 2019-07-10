@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
 function to call Cohesity API
 .DESCRIPTION
@@ -14,7 +14,7 @@ function Get-PBCohesityCreateJob {
   [PoshBot.BotCommand(
     Command = $false,
     TriggerType = 'regex',
-    Regex = 'create\sCohesity\sprotection\sjob\sName=\[(.*)\]\sPolicy\sName=\[(.*)\]\sStorage\sDomain\sName=\[(.*)\]\sEnvironment=\[(.*)\]\sParent\sSource\sId=\[(.*)\]\sSource\sIds=\[(.*)\]\sView\sName=\[(.*)\]'
+    Regex = '(?i)create\sCohesity\sprotection\sjob\sName=\[(.*)\]\sPolicy\sName=\[(.*)\]\sStorage\sDomain\sName=\[(.*)\]\sEnvironment=\[(.*)\]\sVMware\sVM\sname=\[(.*)\]\sView\sName=\[(.*)\]'
   )]
   [CmdletBinding()]
   param(
@@ -27,34 +27,68 @@ function Get-PBCohesityCreateJob {
   try {
     $creds = [pscredential]::new($Connection.Username,($Connection.Password | ConvertTo-SecureString -AsPlainText -Force))
     $null = Connect-CohesityCluster -Server $Connection.Server -Credential $creds
+  } 
+  catch {
+    New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)
+    New-PoshBotCardResponse -Title "Cohesity cluster connection error"
+    $string_err = $_ | Out-String
+    $string_err = $string_err.Split([Environment]::NewLine) | Select -First 1
+    New-PoshBotCardResponse -Text $string_err
+    break
 
+  }
     $Name = $Arguments[1]
     $PolicyName = $Arguments[2]
     $Storage = $Arguments[3]
     $Environment = $Arguments[4]
-    $ParentSource = $Arguments[5]
-    $Source = $Arguments[6]
-    $ViewName = $Arguments[7]
-    if ($ParentSource -eq 'na') {
+    $VM = $Arguments[5]
+    $ViewName = $Arguments[6]
+    try {
+    if ($VM -eq 'na') {
       $objects = New-CohesityProtectionJob -Name $Name -PolicyName $PolicyName -StorageDomainName $Storage -Environment $Environment.Replace("`"","") -ViewName $ViewName | ConvertFrom-Json | Select-Object Name,Environment,Id
     }
 
     if ($ViewName -eq 'na') {
-      $ParentSource = [int]$ParentSource
-      $objects = New-CohesityProtectionJob -Name $Name -PolicyName $PolicyName -StorageDomainName $Storage -Environment $Environment.Replace("`"","") -ParentSourceId $ParentSource -SourceIds $Source.Replace("`"","") | ConvertFrom-Json | Select-Object Name,Environment,Id
+      try {
+        $VM_ids = Get-CohesityVMwareVM -Name $VM 
+      }
+      catch {
+    New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)
+    New-PoshBotCardResponse -Title "Cohesity 'Get-CohesityVMwareVM' API call error"
+    $string_err = $_ | Out-String
+    $string_err = $string_err.Split([Environment]::NewLine) | Select -First 1
+    New-PoshBotCardResponse -Text $string_err
+    break
+
+  }
+  $source_ids = @()
+    $parent_id = $VM_ids.ParentId | Out-String
+    $num_parent_id = $parent_id.Split([Environment]::NewLine) | Select -First 1 
+    $num_parent_id = $num_parent_id.replace(".","") 
+    $source_lst = $VM_ids.Id | Out-String
+    $num_source_ids = $source_lst.Split([Environment]::NewLine)
+    for ($i=0; $i -lt $num_source_ids.length; $i++) {
+    if ($num_source_ids[$i] -ne '') {
+      $source_ids += $num_source_ids[$i].replace(".","")
     }
+   }
+      $objects = New-CohesityProtectionJob -Name $Name -PolicyName $PolicyName -StorageDomainName $Storage -Environment $Environment.Replace("`"","") -ParentSourceId $num_parent_id -SourceIds $source_ids | ConvertFrom-Json | Select-Object Name,Environment,Id
+    }
+  } 
+  catch {
+    New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)
+    New-PoshBotCardResponse -Title "Cohesity 'New-CohesityProtectionJob' API call error "
+    $string_err = $_ | Out-String
+    $string_err = $string_err.Split([Environment]::NewLine) | Select -First 1
+    New-PoshBotCardResponse -Text $string_err
+    break
+
+  }
     $ResponseSplat = @{
       Text = Format-PBCohesityObject -Object $objects -FunctionName $MyInvocation.MyCommand.Name
       AsCode = $true
     }
     New-PoshBotTextResponse @ResponseSplat
-  }
-  catch {
-    New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)
-
-    $string_err = $_ | Out-String
-    New-PoshBotCardResponse -Text $string_err
-
-  }
+  
 }
 

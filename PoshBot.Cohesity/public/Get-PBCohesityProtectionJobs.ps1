@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
 function to call Cohesity API
 .DESCRIPTION
@@ -14,7 +14,7 @@ function Get-PBCohesityProtectionJobs {
   [PoshBot.BotCommand(
     Command = $false,
     TriggerType = 'regex',
-    Regex = 'get Cohesity protection job\s(named|id)\s(.*)'
+    Regex = '(?i)get\sCohesity\sprotection\sjob\s(named|id)\s(.*)'
   )]
   [CmdletBinding()]
   param(
@@ -24,31 +24,40 @@ function Get-PBCohesityProtectionJobs {
     [Parameter(ValueFromRemainingArguments = $true)]
     [object[]]$Arguments
   )
-  try {
+  
+    try {
     $creds = [pscredential]::new($Connection.Username,($Connection.Password | ConvertTo-SecureString -AsPlainText -Force))
     $null = Connect-CohesityCluster -Server $Connection.Server -Credential $creds
+  } 
+  catch {
+    New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)
+    New-PoshBotCardResponse -Title "Cohesity cluster connection error"
+    $string_err = $_ | Out-String
+    $string_err = $string_err.Split([Environment]::NewLine) | Select -First 1
+    New-PoshBotCardResponse -Text $string_err
+    break
+
+  }
     $typeJob = $Arguments[1]
     $job = $Arguments[2]
-
+    try {
     if ($typeJob -eq "named") {
-      $objects = Get-CohesityProtectionJob -Names $job }
+      $objects = Get-CohesityProtectionJob -Names $job | Out-String
+    }
     if ($typeJob -eq "id") {
       $number = [int]$job
-      $objects = Get-CohesityProtectionJob -Ids $number
+      $objects = Get-CohesityProtectionJob -Ids $number | Out-String
     }
-    $ResponseSplat = @{
-      Text = Format-PBCohesityObject -Object $objects -FunctionName $MyInvocation.MyCommand.Name
-      AsCode = $true
-    }
-
-    New-PoshBotTextResponse @ResponseSplat
   }
   catch {
     New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)
-
+    New-PoshBotCardResponse -Title "Cohesity 'Get-CohesityProtectionJob' API call error "
     $string_err = $_ | Out-String
+    $string_err = $string_err.Split([Environment]::NewLine) | Select -First 1
     New-PoshBotCardResponse -Text $string_err
+    break
 
   }
+  New-PoshBotCardResponse -Text $objects
 }
 

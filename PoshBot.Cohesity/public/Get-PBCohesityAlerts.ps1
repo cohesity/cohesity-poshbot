@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
 function to call Cohesity API
 .DESCRIPTION
@@ -13,7 +13,7 @@ function Get-PBCohesityAlerts {
   [PoshBot.BotCommand(
     Command = $false,
     TriggerType = 'regex',
-    Regex = 'get Cohesity alerts -max\s(.*)'
+    Regex = '(?i)get\sCohesity\salerts\s-max\s(.*)'
   )]
   [CmdletBinding()]
   param(
@@ -23,12 +23,34 @@ function Get-PBCohesityAlerts {
     [Parameter(ValueFromRemainingArguments = $true)]
     [object[]]$Arguments
   )
-  try {
+ 
+    try {
     $creds = [pscredential]::new($Connection.Username,($Connection.Password | ConvertTo-SecureString -AsPlainText -Force))
     $null = Connect-CohesityCluster -Server $Connection.Server -Credential $creds
+  } 
+  catch {
+    New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)
+    New-PoshBotCardResponse -Title "Cohesity cluster connection error"
+    $string_err = $_ | Out-String
+    $string_err = $string_err.Split([Environment]::NewLine) | Select -First 1
+    New-PoshBotCardResponse -Text $string_err
+    break
+
+  }
     $alerts = $Arguments[1]
     $alerts = [int]$alerts
-    $objects = Get-CohesityAlert -MaxAlerts $alerts -AlertStates kOpen
+    try {
+    $objects = Get-CohesityAlert -MaxAlerts $alerts -AlertStates kOpen | Select-Object -Property Id, AlertCategory, Severity, LatestTimestampUsecs, AlertDocument
+  } 
+  catch {
+    New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)
+    New-PoshBotCardResponse -Title "Cohesity 'Get-CohesityAlert' API call error "
+    $string_err = $_ | Out-String
+    $string_err = $string_err.Split([Environment]::NewLine) | Select -First 1
+    New-PoshBotCardResponse -Text $string_err
+    break
+
+  }
     $critical = 0
     $warning = 0
     Get-CohesityAlert -MaxAlerts $alerts -AlertStates kOpen | Select-Object Severity | ForEach-Object {
@@ -54,12 +76,5 @@ function Get-PBCohesityAlerts {
       }
 
     }
-  }
-  catch {
-    New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)
-
-    $string_err = $_ | Out-String
-    New-PoshBotCardResponse -Text $string_err
-
-  }
+ 
 }
