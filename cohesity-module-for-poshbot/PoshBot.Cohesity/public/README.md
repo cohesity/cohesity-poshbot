@@ -65,6 +65,7 @@ In Cluster-Config.json file simple enter the clusters you want to monitor in thi
   
   For more details:
   * $ indicates user input
+  * commands are case insensitive
   
   | Command | Output |
 | --------- | ----------- |
