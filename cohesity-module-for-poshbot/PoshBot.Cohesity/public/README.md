@@ -77,7 +77,7 @@ In Cluster-Config.json file simple enter the clusters you want to monitor in thi
 | `create Cohesity protection job Name=[name] Policy Name=[name] Storage Domain Name=[name] Environment=[name] VMware VM name=[name] View Name=[na]` | create protection job if no `View Name` input `[na]`, if no `VMware VM name` input `[na]`|
 | `get Cohesity protection job named $` | get info on protection job indicated by name|
 | `get Cohesity protection runs graph` | outputs a graph indicating passed and failed runs|
-| `get Cohesity resloved alerts -max $` | get resolved alerts with max number inputed|
+| `get Cohesity resolved alerts -max $` | get resolved alerts with max number inputed|
 | `resume Cohesity protection job -Name $` | resume a protection job|
 | `Start protection job` | start a protection job|
 | `stop Cohesity protection job -Name $ -JobRunId $` | stop protection job; if no `-JobRunId` input `na` if no `-Name` input `na` |
