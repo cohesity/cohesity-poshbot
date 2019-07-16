@@ -79,7 +79,8 @@ In Cluster-Config.json file simple enter the clusters you want to monitor in thi
 | `get Cohesity protection runs graph` | outputs a graph indicating passed and failed runs|
 | `get Cohesity resolved alerts -max $` | get resolved alerts with max number inputed|
 | `resume Cohesity protection job -Name $` | resume a protection job|
-| `Start protection job` | start a protection job|
+| `start Cohesity protection job -Name $ -CopyRunTargets $ -Runtype $ -SourceIds $
+` | start a protection job; only name is required rest can be `na`|
 | `stop Cohesity protection job -Name $ -JobRunId $` | stop protection job; if no `-JobRunId` input `na` if no `-Name` input `na` |
 | `get Cohesity user` | get info on Cohesity user|
 
