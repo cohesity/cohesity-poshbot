@@ -34,7 +34,7 @@ If Poshbot is not already installed and running on Slack reffer to documentation
 }
   ```
 # Configuration in Config json
-In Cluster-Config.json file simple enter the clusters you want to monitor in this format: 
+In Cluster-Config.json file simply enter the clusters you want to monitor in this format: 
 ```
 {
         "Cluster-ip" : [
