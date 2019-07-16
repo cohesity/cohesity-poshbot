@@ -70,7 +70,7 @@ In Cluster-Config.json file simple enter the clusters you want to monitor in thi
   | Command | Output |
 | --------- | ----------- |
 | `get Cohesity active protection jobs` | all active protection jobs|
-| `get Cohesity alerts -max $` | returns max number of alerts, if green check all in non critical, if red x alerts in critical, if yellow warning alerts in warning status|
+| `get Cohesity alerts -max $` | returns max number of alerts, if :white_check_mark: all in non critical, if :x: alerts in critical, if :warning: alerts in warning status|
 | `change Cohesity cluster to $` | change cluster being monitored indicated by numbers from 1 > |
 | `get Cohesity cluster` | get information on Cohesity cluster|
 | `get Cohesity ip` | list Cohesity clusters available indicated by numbers from 1 >|
