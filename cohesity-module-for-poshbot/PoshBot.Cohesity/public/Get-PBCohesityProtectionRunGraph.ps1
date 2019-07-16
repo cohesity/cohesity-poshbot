@@ -97,6 +97,7 @@ function Get-PBCohesityProtectionRunGraph {
     $current_hour = [int]$current_hour
     $current_hour = [string]$current_hour
     $past_day = $current_time - 86400000000
+    $compare_day = $past_day - 3600
     try {
         $objects = Get-CohesityProtectionJobRun -StartedTime $past_day
     }
@@ -108,33 +109,34 @@ function Get-PBCohesityProtectionRunGraph {
         New-PoshBotCardResponse -Text $string_error
         break
 
-    }    
+    }
     $status = @()
     $end_time = @()
     foreach ($i in $objects) {
-        $status += [String]$i.backupRun.status + ','
-        try {
-            $hours = Convert-CohesityUsecsToDateTime -Usecs $i.copyRun.expiryTimeUsecs
-        } 
-        catch {
-            New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)
-            New-PoshBotCardResponse -Title "Cohesity powershell command error: Convert-CohesityUsecsToDateTime"
-            $string_error = $_ | Out-String
-            $string_error = $string_error.Split([Environment]::NewLine) | Select-Object -First 1
-            New-PoshBotCardResponse -Text $string_error
-            break
-    
-        }   
-        $hour = $hours.ToString("HH")
-        $decimal = $hours.ToString("mm")
-        $decimal = [float]$decimal
-        $hour = [int]$hour
-        if ($decimal -gt 30) {
-            $hour = $hour + 1
-        }
-        $hour = [string]$hour
-        $end_time += $hour + ','
+        if ($i.copyRun.runStartTimeUsecs -gt $compare_day) {
+            $status += [String]$i.backupRun.status + ','
+            try {
+                $hours = Convert-CohesityUsecsToDateTime -Usecs $i.copyRun.runStartTimeUsecs
+            }
+            catch {
+                New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)
+                New-PoshBotCardResponse -Title "Cohesity powershell command error: Convert-CohesityUsecsToDateTime"
+                $string_error = $_ | Out-String
+                $string_error = $string_error.Split([Environment]::NewLine) | Select-Object -First 1
+                New-PoshBotCardResponse -Text $string_error
+                break
 
+            }
+            $hour = $hours.ToString("HH")
+            $decimal = $hours.ToString("mm")
+            $decimal = [float]$decimal
+            $hour = [int]$hour
+            if ($decimal -gt 30) {
+                $hour = $hour + 1
+            }
+            $hour = [string]$hour
+            $end_time += $hour + ','
+        }
     }
 
     $path_py = $path + '/graph.py'
@@ -147,6 +149,3 @@ function Get-PBCohesityProtectionRunGraph {
     python $path_py $status $end_time $current_standard $path
     New-PoshBotFileUpload -Path $path_png
 }
-
-
-

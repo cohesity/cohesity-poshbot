@@ -22,6 +22,8 @@ def graph(stat, hour, current, path):
     N = 24
     success = [0] * N
     fail = [0] * N
+    cancel = [0] * N
+    running = [0] * N
     total_time = current_t
     time_line = [0] * N
     time_tt = [0] * N
@@ -30,13 +32,13 @@ def graph(stat, hour, current, path):
         if (total_time < 0):
             temp = total_time + 24
             time_line[i] = temp
-            time_tt[i] = total_time
+            time_tt[i] = total_time + 1
         if (total_time == 0):
             time_line[i] = 24
-            time_tt[i] = total_time
+            time_tt[i] = total_time + 1
         if (total_time > 0):
             time_line[i] = total_time
-            time_tt[i] = total_time
+            time_tt[i] = total_time + 1
     time_tt.reverse()
     time_line.reverse()
     num = 0
@@ -45,14 +47,24 @@ def graph(stat, hour, current, path):
             fail[time_line.index(hour[num])] += 1
         if stat[num] == 'KSuccess':
             success[time_line.index(hour[num])] += 1
+        if stat[num] == 'KCanceled':
+            cancel[time_line.index(hour[num])] += 1
+        if stat[num] == 'KAccepted':
+            running[time_line.index(hour[num])] += 1
         num += 1
     plt.bar(time_tt, success, color='g',
             align='center', label='success')
     plt.bar(time_tt, fail, color='r', bottom=success,
             align='center', label='failed')
+    plt.bar(time_tt, cancel, color='#FF8D33', bottom=fail,
+            align='center', label='canceled')
+    plt.bar(time_tt, running, color='#3358FF', bottom=cancel,
+            align='center', label='running')
     plt.legend(loc='upper left')
     plt.ylabel('number of protection runs')
     combined = [x + y for x, y in zip(fail, success)]
+    combined = [x + y for x, y in zip(combined, cancel)]
+    combined = [x + y for x, y in zip(combined, running)]
     x_axis = []
     x_coor = []
     count = 0
