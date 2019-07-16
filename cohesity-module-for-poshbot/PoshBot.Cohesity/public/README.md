@@ -16,7 +16,7 @@ If Poshbot is not already installed and running on Slack reffer to documentation
   * [PoshBot Documentation](https://poshbot.readthedocs.io/en/latest/)
 
 # Configuration in Poshbot
-1. Clone the `cohesity-module-for-poshbot` directory in the $env:PSModulePath directory on your Linux server (it should be the path starting from the home directory) 
+1. Clone the `cohesity-module-for-poshbot` directory in the `$env:PSModulePath` directory on your Linux server (it should be the path starting from the home directory) 
 
 2. Next configure Poshbot with credentials (i.e password, username, and full path) 
   * To do this visit [http://docs.poshbot.io/en/latest/guides/configuration/] and create a default configuration in [/cohesity-module-for-poshbot/PoshBot.Cohesity/public] 
@@ -77,9 +77,9 @@ In Cluster-Config.json file simple enter the clusters you want to monitor in thi
 | `create Cohesity protection job Name=[name] Policy Name=[name] Storage Domain Name=[name] Environment=[name] VMware VM name=[name] View Name=[na]` | create protection job if no `View Name` input `[na]`, if no `VMware VM name` input `[na]`|
 | `get Cohesity protection job named $` | get info on protection job indicated by name|
 | `get Cohesity protection runs graph` | outputs a graph indicating passed and failed runs|
-| `get Cohesity resloved alerts -max $` | get resolved alerts with max number inputed|
+| `get Cohesity resolved alerts -max $` | get resolved alerts with max number inputed|
 | `resume Cohesity protection job -Name $` | resume a protection job|
-| `Start protection job` | start a protection job|
+| `start Cohesity protection job -Name $ -CopyRunTargets $ -Runtype $ -SourceIds $` | start a protection job; only name is required rest can be `na`|
 | `stop Cohesity protection job -Name $ -JobRunId $` | stop protection job; if no `-JobRunId` input `na` if no `-Name` input `na` |
 | `get Cohesity user` | get info on Cohesity user|
 
