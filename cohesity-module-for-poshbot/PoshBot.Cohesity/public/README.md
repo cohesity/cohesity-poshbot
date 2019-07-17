@@ -34,7 +34,7 @@ If Poshbot is not already installed and running on Slack reffer to documentation
 }
   ```
 # Configuration in Config json
-In Cluster-Config.json file simple enter the clusters you want to monitor in this format: 
+In Cluster-Config.json file simply enter the clusters you want to monitor in this format: 
 ```
 {
         "Cluster-ip" : [
@@ -70,11 +70,11 @@ In Cluster-Config.json file simple enter the clusters you want to monitor in thi
   | Command | Output |
 | --------- | ----------- |
 | `get Cohesity active protection jobs` | all active protection jobs|
-| `get Cohesity alerts -max $` | returns max number of alerts, if green check all in non critical, if red x alerts in critical, if yellow warning alerts in warning status|
+| `get Cohesity alerts -max $` | returns max number of alerts, if :white_check_mark: all in non critical, if :x: alerts in critical, if ❗ alerts in warning status|
 | `change Cohesity cluster to $` | change cluster being monitored indicated by numbers from 1 > |
 | `get Cohesity cluster` | get information on Cohesity cluster|
 | `get Cohesity ip` | list Cohesity clusters available indicated by numbers from 1 >|
-| `create Cohesity protection job Name=[name] Policy Name=[name] Storage Domain Name=[name] Environment=[name] VMware VM name=[name] View Name=[na]` | create protection job if no `View Name` input `[na]`, if no `VMware VM name` input `[na]`|
+| `create Cohesity protection job Name=[$] Policy Name=[$] Storage Domain Name=[$] Environment=[$] VMware VM name=[$] View Name=[$]` | create protection job if no `View Name` input `[na]`, if no `VMware VM name` input `[na]`|
 | `get Cohesity protection job named $` | get info on protection job indicated by name|
 | `get Cohesity protection runs graph` | outputs a graph indicating passed and failed runs|
 | `get Cohesity resolved alerts -max $` | get resolved alerts with max number inputed|
