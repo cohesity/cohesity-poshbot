@@ -82,5 +82,6 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
 | `resume cohesity protection job named $` | resume a protection job|
 | `start cohesity protection job named $` | start a protection job|
 | `stop cohesity protection job named $` | stop protection job |
+| `resolve cohesity alert id $ with message: $` | resolve alert |
 | `get cohesity user` | get info on Cohesity user|
 
