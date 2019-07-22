@@ -26,6 +26,7 @@ If Poshbot is not already installed and running on Slack reffer to documentation
   @{
    'PoshBot.Cohesity' = @{
       Connection = @{
+        Password = 'password'
         Username = 'username'
         Path = 'path'
         Domain = 'domain'
