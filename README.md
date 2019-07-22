@@ -15,3 +15,4 @@ Cohesity Poshbot can be used to :
 * Resume Cohesity job
 * Stop Cohesity job
 * Start Cohesity job 
+* Resolve Cohesity alerts 
