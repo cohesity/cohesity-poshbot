@@ -4,7 +4,7 @@ function to call Cohesity API
 .DESCRIPTION
 Get info on Cohesity cluster
 .EXAMPLE
-get Cohesity cluster
+get cohesity cluster
 Description
 -----------
 outputs stats on Cohesity cluster
@@ -13,7 +13,7 @@ function Get-PBCohesityCluster {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)get\sCohesity\scluster'
+        Regex = '(?i)get\scohesity\scluster'
     )]
     [CmdletBinding()]
     param(

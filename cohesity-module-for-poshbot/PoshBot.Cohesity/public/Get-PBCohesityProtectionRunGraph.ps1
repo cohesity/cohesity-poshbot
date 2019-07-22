@@ -4,7 +4,7 @@ function to call Cohesity API
 .DESCRIPTION
 Create a protection run graph
 .EXAMPLE
-get Cohesity protection run graph
+get cohesity protection run graph
 Description
 -----------
 outputs new created graph
@@ -14,7 +14,7 @@ function Get-PBCohesityProtectionRunGraph {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)get\sCohesity\sprotection\sruns\sgraph'
+        Regex = '(?i)get\scohesity\sprotection\sruns\sgraph'
     )]
     [CmdletBinding()]
     param(

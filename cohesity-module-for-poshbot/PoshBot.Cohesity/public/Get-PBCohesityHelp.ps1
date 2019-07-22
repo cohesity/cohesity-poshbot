@@ -1,3 +1,15 @@
+<#
+.SYNOPSIS
+Function to output the slack commands
+.DESCRIPTION
+Output slack commands
+.EXAMPLE
+cohesity command help
+Description
+-----------
+outputs new created protection job
+#>
+
 function Get-PBCohesityHelp {
     [PoshBot.BotCommand(
         Command = $false,
@@ -12,22 +24,58 @@ function Get-PBCohesityHelp {
         [Parameter(ValueFromRemainingArguments = $true)]
         [object[]]$Arguments
     )
-$yourData = @(
-    @{Command="get Cohesity active protection jobs";Output="all active protection jobs"},
-    @{Command="get Cohesity alerts -max $";Output="returns max number of alerts, if ✅ all in non critical, if ❌ alerts in critical, if ❗alerts in warning status"},
-    @{Command="change Cohesity cluster to $";Output="change cluster being monitored indicated by numbers from 1 >"},
-    @{Command="get Cohesity ip";Output="list Cohesity clusters available indicated by numbers from 1 >"},
-    @{Command="create Cohesity protection job Name=[$] Policy Name=[$] Storage Domain Name=[$] Environment=[$] VMware VM name=[$] View Name=[$]";Output="create protection job if no View Name input [na], if no VMware VM name input [na]"},
-    @{Command="get Cohesity protection job named $";Output="get info on protection job indicated by name"},
-    @{Command="get Cohesity protection runs graph";Output="outputs a graph indicating passed and failed runs"},
-    @{Command="get Cohesity resolved alerts -max $";Output="get resolved alerts with max number inputed"},
-    @{Command="resume Cohesity protection job -Name $";Output="resume a protection job"},
-    @{Command="start Cohesity protection job -Name $ -CopyRunTargets $ -Runtype $ -SourceIds $";Output="start a protection job; only name is required rest can be na"},
-    @{Command="stop Cohesity protection job -Name $ -JobRunId $";Output="stop protection job; if no -JobRunId input na if no -Name input na"},
-    @{Command="get Cohesity user";Output="get info on Cohesity user"},
-    @{Command="get Cohesity cluster";Output="get information on Cohesity cluster"}) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
-$objects = $yourData
+    $yourData = @(
+        @{ Output = "all active protection jobs"; Command = "get cohesity active protection jobs"}) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+    New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
 
-New-PoshBotCardResponse -Text ($objects |  Format-List -Property * |Out-String -Width 120)
+    $yourData = @(
+        @{ Output = "returns max number of alerts, if ✅ all in non critical, if ❌ alerts in critical, if ❗alerts in warning status";Command = "get cohesity max alerts $"}) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+    New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
+
+    $yourData = @(
+        @{ Output = "change cluster being monitored indicated by numbers from 1 >";Command = "change cohesity cluster to $"}) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+    New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
+
+    $yourData = @(
+        @{ Output = "list Cohesity clusters available indicated by numbers from 1 >"; Command = "get cohesity ip"}) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+    New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
+
+    $yourData = @(
+        @{ Output = "create protection job if no View Name input na, if no VMware VM name input na"; Command = "create cohesity protection job named $, policy name $, storage domain name $, environment $, vmware vm name $, view name $"}) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+    New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
+
+    $yourData = @(
+        @{ Output = "get info on protection job indicated by name"; Command = "get cohesity protection job named $"}) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+    New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
+
+    $yourData = @(
+        @{Output = "outputs a graph indicating passed and failed runs";Command = "get cohesity protection runs graph" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+    New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
+
+    $yourData = @(
+        @{ Output = "get resolved alerts with max number inputed"; Command = "get cohesity max resolved alerts $"}) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+    New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
+    $yourData = @(
+        @{Output = "resume a protection job"; Command = "resume cohesity protection job named $" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+    New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
+
+    $yourData = @(
+        @{ Output = "start a protection job"; Command = "start cohesity protection job named $" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+     New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
+
+    $yourData = @(
+        @{ Output = "stop protection job";Command = "stop cohesity protection job named $" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+    New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
+
+    $yourData = @(
+        @{ Output = "get info on Cohesity user"; Command = "get cohesity user" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+    New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
+    $yourData = @(
+        @{ Output = "resolve Cohesity alert"; Command = "resolve cohesity alert id $ with message: $" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+    New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
+
+    $yourData = @(
+        @{ Output = "get information on Cohesity cluster"; Command = "get cohesity cluster" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+
+        New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
 }
-

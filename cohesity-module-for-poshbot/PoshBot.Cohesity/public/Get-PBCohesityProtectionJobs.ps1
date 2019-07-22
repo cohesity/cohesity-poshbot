@@ -4,7 +4,7 @@ function to call Cohesity API
 .DESCRIPTION
 Get info on Cohesity protection job
 .EXAMPLE
-get Cohesity protection job named protect
+get cohesity protection job named protect
 Description
 -----------
 outputs stats on job
@@ -14,7 +14,7 @@ function Get-PBCohesityProtectionJobs {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)get\sCohesity\sprotection\sjob\s(named|id)\s(.*)'
+        Regex = '(?i)get\scohesity\sprotection\sjob\snamed\s(.*)'
     )]
     [CmdletBinding()]
     param(
@@ -54,16 +54,10 @@ function Get-PBCohesityProtectionJobs {
         break
 
     }
-    $typeJob = $Arguments[1]
-    $job = $Arguments[2]
+    $job = $Arguments[1]
     try {
-        if ($typeJob -eq "named") {
-            $objects = Get-CohesityProtectionJob -Names $job | Out-String
-        }
-        if ($typeJob -eq "id") {
-            $number = [int]$job
-            $objects = Get-CohesityProtectionJob -Ids $number | Out-String
-        }
+        $objects = Get-CohesityProtectionJob -Names $job | Out-String
+        
     }
     catch {
         New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)

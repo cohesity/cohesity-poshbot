@@ -4,7 +4,7 @@ function to call Cohesity API
 .DESCRIPTION
 Create new protection job
 .EXAMPLE
-create Cohesity protection job Name=[iitworks] Policy Name=[Bronze] Storage Domain Name=[DefaultStorageDomain] Environment=[kVMware] VMware VM name=[name] View Name=[na]
+create cohesity protection job named iitworks, policy name Bronze, storage domain name DefaultStorageDomain, environment kVMware, vmware vm name name, view name na
 Description
 -----------
 outputs new created protection job
@@ -14,7 +14,7 @@ function Get-PBCohesityCreateJob {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)create\sCohesity\sprotection\sjob\sName=\[(.*)\]\sPolicy\sName=\[(.*)\]\sStorage\sDomain\sName=\[(.*)\]\sEnvironment=\[(.*)\]\sVMware\sVM\sname=\[(.*)\]\sView\sName=\[(.*)\]'
+        Regex = '(?i)create\scohesity\sprotection\sjob\snamed\s(.*),\spolicy\sname\s(.*),\sstorage\sdomain\sname\s(.*),\senvironment\s(.*),\svmware\svm\sname\s(.*),\sview\sname\s(.*)'
     )]
     [CmdletBinding()]
     param(

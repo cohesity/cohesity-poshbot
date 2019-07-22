@@ -4,7 +4,7 @@ function to call Cohesity API
 .DESCRIPTION
 Get open alerts
 .EXAMPLE
-get Cohesity alerts -max 10
+get cohesity max alerts 10
 Description
 -----------
 outputs all open alerts on Cohesity cluster
@@ -13,7 +13,7 @@ function Get-PBCohesityAlerts {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)get\sCohesity\salerts\s-max\s(.*)'
+        Regex = '(?i)get\scohesity\smax\salerts\s(.*)'
     )]
     [CmdletBinding()]
     param(

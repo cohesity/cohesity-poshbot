@@ -4,7 +4,7 @@ function to change configured Cohesity cluster using ip address
 .DESCRIPTION
 Change ip addresses
 .EXAMPLE
-change Cohesity cluster to 1
+change cohesity cluster to 1
 Description
 -----------
 changes configured Cohesity cluster
@@ -14,7 +14,7 @@ function Get-PBCohesityChangeCluster {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)change\sCohesity\scluster\sto\s(.*)'
+        Regex = '(?i)change\scohesity\scluster\sto\s(.*)'
     )]
     [CmdletBinding()]
     param(

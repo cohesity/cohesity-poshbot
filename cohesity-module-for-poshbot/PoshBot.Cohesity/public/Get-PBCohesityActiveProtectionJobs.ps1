@@ -4,7 +4,7 @@ function to call Cohesity API
 .DESCRIPTION
 Get active protection jobs
 .EXAMPLE
-get Cohesity active protection jobs
+get cohesity active protection jobs
 Description
 -----------
 outputs all active protection jobs on Cohesity cluster
@@ -14,7 +14,7 @@ function Get-PBCohesityActiveProtectionJobs {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)get\sCohesity\sactive\sprotection\sjobs'
+        Regex = '(?i)get\scohesity\sactive\sprotection\sjobs'
     )]
     [CmdletBinding()]
     param(

@@ -4,7 +4,7 @@ function to call Cohesity API
 .DESCRIPTION
 Get all resolved alerts
 .EXAMPLE
-get Cohesity resloved alerts -max 10
+get cohesity max resloved alerts 10
 Description
 -----------
 outputs resloved alerts from Cohesity cluster
@@ -13,7 +13,7 @@ function Get-PBCohesityResolvedAlerts {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)get\sCohesity\sresolved\salerts\s-max\s(.*)'
+        Regex = '(?i)get\scohesity\smax\sresolved\salerts\s(.*)'
     )]
     [CmdletBinding()]
     param(

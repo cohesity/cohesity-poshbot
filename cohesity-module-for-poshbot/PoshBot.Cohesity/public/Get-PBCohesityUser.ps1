@@ -4,7 +4,7 @@ function to call Cohesity API
 .DESCRIPTION
 Get Cohesity info on user
 .EXAMPLE
-get Cohesity user
+get cohesity user
 Description
 -----------
 outputs stats on user
@@ -13,7 +13,7 @@ function Get-PBCohesityUser {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)get\sCohesity\suser'
+        Regex = '(?i)get\scohesity\suser'
     )]
     [CmdletBinding()]
     param(

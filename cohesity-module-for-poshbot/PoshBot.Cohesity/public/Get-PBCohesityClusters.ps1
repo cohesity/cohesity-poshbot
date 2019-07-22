@@ -4,7 +4,7 @@ function to get all configured Cohesity clusters ip address
 .DESCRIPTION
 Get all ip addresses
 .EXAMPLE
-get Cohesity ip
+get cohesity ip
 Description
 -----------
 outputs all configured ip addresses
@@ -14,7 +14,7 @@ function Get-PBCohesityClusters {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)get\sCohesity\sip'
+        Regex = '(?i)get\scohesity\sip'
     )]
     [CmdletBinding()]
     param(
