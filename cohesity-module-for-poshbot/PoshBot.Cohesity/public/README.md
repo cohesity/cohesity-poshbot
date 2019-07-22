@@ -62,7 +62,7 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
   
   # Commands 
   
-  To get information on commands use `get cohesity command help` to get info or `!help command -Full` (e.g `!help Get-PBCohesityAlerts -Full`) for full info on use.
+  To get information on commands use `get cohesity help` to get info or `!help command -Full` (e.g `!help Get-PBCohesityAlerts -Full`) for full info on use.
   
   For more details:
   * $ indicates user input
