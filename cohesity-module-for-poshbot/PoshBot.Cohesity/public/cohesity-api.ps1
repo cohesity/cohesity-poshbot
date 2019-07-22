@@ -40,7 +40,6 @@ used to manually make api calls
         }
     }
 
-    
     # api call function
     $methods = 'get', 'post', 'put', 'delete'
     function api($method, $uri, $data){
@@ -52,7 +51,6 @@ used to manually make api calls
             $body = ConvertTo-Json -Depth 100 $data
             $result = Invoke-RestMethod -Method $method -Uri $url -Body $body -Header $HEADER  -SkipCertificateCheck
     
-    #        return $result
             New-PoshBotCardResponse  -Text ($result| Format-List | Out-String)
         }
         catch {

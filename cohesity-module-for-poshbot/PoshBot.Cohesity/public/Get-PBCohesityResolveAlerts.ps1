@@ -40,18 +40,18 @@ function Get-PBCohesityResolveAlerts {
       break
 
   }
-  $id_alert = $Arguments[1]
-  $message = $Arguments[2]
+$id_alert = $Arguments[1]
+$message = $Arguments[2]
 $api_path = $Connection.Path + "/cohesity-api.ps1"
 . powershell $api_path
 apiauth  $Connection.Password  $Connection.Username  $Connection.Domain $server
-$y = "@{ 'alertIdList': [ '"+$id_alert +"' ],'resolutionDetails': {'resolutionDetails': '','resolutionSummary': '"+ $message +"'  }}"
-$y -replace "^@", ""
-$y = $y -replace "=", ":"
-$y = $y -replace ";", ","
-$y = $y -replace "@", ""
-$y = $y | ConvertFrom-Json
-api post alertResolutions $y
+$body = "@{ 'alertIdList': [ '"+$id_alert +"' ],'resolutionDetails': {'resolutionDetails': '','resolutionSummary': '"+ $message +"'  }}"
+$body -replace "^@", ""
+$body = $body -replace "=", ":"
+$body = $body -replace ";", ","
+$body = $body -replace "@", ""
+$body = $body | ConvertFrom-Json
+api post alertResolutions $body
 
 
 }
