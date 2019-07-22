@@ -70,17 +70,17 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
   
   | Command | Output |
 | --------- | ----------- |
-| `get Cohesity active protection jobs` | all active protection jobs|
-| `get Cohesity alerts -max $` | returns max number of alerts, if :white_check_mark: all in non critical, if :x: alerts in critical, if ❗ alerts in warning status|
-| `change Cohesity cluster to $` | change cluster being monitored indicated by numbers from 1 > |
-| `get Cohesity cluster` | get information on Cohesity cluster|
-| `get Cohesity ip` | list Cohesity clusters available indicated by numbers from 1 >|
-| `create Cohesity protection job Name=[$] Policy Name=[$] Storage Domain Name=[$] Environment=[$] VMware VM name=[$] View Name=[$]` | create protection job if no `View Name` input `[na]`, if no `VMware VM name` input `[na]`|
-| `get Cohesity protection job named $` | get info on protection job indicated by name|
-| `get Cohesity protection runs graph` | outputs a graph indicating passed and failed runs|
-| `get Cohesity resolved alerts -max $` | get resolved alerts with max number inputed|
-| `resume Cohesity protection job -Name $` | resume a protection job|
-| `start Cohesity protection job -Name $ -CopyRunTargets $ -Runtype $ -SourceIds $` | start a protection job; only name is required rest can be `na`|
-| `stop Cohesity protection job -Name $ -JobRunId $` | stop protection job; if no `-JobRunId` input `na` if no `-Name` input `na` |
-| `get Cohesity user` | get info on Cohesity user|
+| `get cohesity active protection jobs` | all active protection jobs|
+| `get cohesity max alerts $` | returns max number of alerts, if :white_check_mark: all in non critical, if :x: alerts in critical, if ❗ alerts in warning status|
+| `change cohesity cluster to $` | change cluster being monitored indicated by numbers from 1 > |
+| `get cohesity cluster` | get information on Cohesity cluster|
+| `get cohesity ip` | list Cohesity clusters available indicated by numbers from 1 >|
+| `create cohesity protection job named $, policy name $, storage domain name $, environment $, vmware vm name $, view name $` | create protection job if no `view name` input `na`, if no `vmware vm name` input `na`|
+| `get cohesity protection job named $` | get info on protection job indicated by name|
+| `get cohesity protection runs graph` | outputs a graph indicating passed and failed runs|
+| `get cohesity max resolved alerts $` | get resolved alerts with max number inputed|
+| `resume cohesity protection job named $` | resume a protection job|
+| `start cohesity protection job named $` | start a protection job|
+| `stop cohesity protection job named $` | stop protection job |
+| `get cohesity user` | get info on Cohesity user|
 
