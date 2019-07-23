@@ -4,7 +4,7 @@ function to call Cohesity API
 .DESCRIPTION
 resolve an alert
 .EXAMPLE
-resolve cohesity alertid 123 with message: resolve
+resolve cohesity alert id 123 with message: resolve
 Description
 -----------
 resolves an alert

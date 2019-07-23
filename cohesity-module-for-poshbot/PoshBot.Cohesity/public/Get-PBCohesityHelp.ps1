@@ -14,7 +14,7 @@ function Get-PBCohesityHelp {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)Cohesity\scommand\shelp'
+        Regex = '(?i)get\sCohesity\shelp'
     )]
     [CmdletBinding()]
     param(
