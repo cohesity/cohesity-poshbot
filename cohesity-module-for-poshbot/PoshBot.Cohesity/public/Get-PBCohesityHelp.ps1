@@ -31,6 +31,9 @@ function Get-PBCohesityHelp {
     $yourData = @(
         @{ Output = "returns max number of alerts, if ✅ all in non critical, if ❌ alerts in critical, if ❗alerts in warning status";Command = "get cohesity max alerts $"}) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
     New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
+    $yourData = @(
+        @{ Output = "get latest alerts in past 24 hours";Command = "get cohesity latest alerts"}) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+    New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
 
     $yourData = @(
         @{ Output = "change cluster being monitored indicated by numbers from 1 >";Command = "change cohesity cluster to $"}) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
