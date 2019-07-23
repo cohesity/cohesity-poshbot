@@ -26,7 +26,7 @@ function Format-PBCohesityObject {
             'Get-PBCohesityChangeCluster.ps1' {$msg -f 'change cluster' }
             'Get-PBCohesityHelp.ps1' {$msg -f 'command help' }
             'Get-PBCohesityResolveAlerts.ps1' {$msg -f 'resolve alerts' }
-            'Get-PBCohesityLatesteAlerts.ps1' {$msg -f 'latest alerts' }
+            'Get-PBCohesityLatestAlerts.ps1' {$msg -f 'latest alerts' }
 
         default {$msg -f 'objects'}
         }
