@@ -14,7 +14,7 @@ function Get-PBCohesityProtectionRunGraph {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)get\scohesity\sprotection\sruns\sgraph'
+        Regex = '(?i)get\scohesity\sprotection\sruns\sreport'
     )]
     [CmdletBinding()]
     param(
