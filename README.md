@@ -1,6 +1,6 @@
 # Cohesity Poshbot 
 # Overview
-![Image description](cohesity-poshbot/Diagram.png)
+![Image description](Diagram.png)
 # Get Started 
 Link to how to setup and get Poshbot running 
 * [Quick Start Guide](/cohesity-module-for-poshbot/PoshBot.Cohesity/public/README.md)
