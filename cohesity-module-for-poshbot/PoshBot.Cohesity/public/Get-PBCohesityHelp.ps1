@@ -52,7 +52,7 @@ function Get-PBCohesityHelp {
     New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
 
     $yourData = @(
-        @{Output = "outputs a graph indicating passed and failed runs";Command = "get cohesity protection runs graph" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+        @{Output = "outputs a graph indicating passed and failed runs";Command = "get cohesity protection runs report" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
     New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
 
     $yourData = @(
