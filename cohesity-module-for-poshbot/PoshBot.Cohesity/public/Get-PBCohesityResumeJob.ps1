@@ -4,7 +4,7 @@ function to call Cohesity API
 .DESCRIPTION
 Resume protection job
 .EXAMPLE
-resume cohesity protection job named ptortect
+resume cohesity protection job ptortect
 Description
 -----------
 outputs if protection job has been resumed
@@ -13,7 +13,7 @@ function Get-PBCohesityResumeJob {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)resume\scohesity\sprotection\sjob\snamed\s(.*)'
+        Regex = '(?i)resume\scohesity\sprotection\sjob\s(.*)'
     )]
     [CmdletBinding()]
     param(

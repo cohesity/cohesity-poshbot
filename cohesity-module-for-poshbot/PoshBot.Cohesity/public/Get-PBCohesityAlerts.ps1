@@ -55,8 +55,9 @@ function Get-PBCohesityAlerts {
     }
     $alerts = $Arguments[1]
     $alerts = [int]$alerts
+    New-PoshBotCardResponse -Title "Cohesity Alerts"
     try {
-        $objects = Get-CohesityAlert -MaxAlerts $alerts -AlertStates kOpen | Select-Object -Property Id, AlertCategory, Severity, LatestTimestampUsecs, AlertDocument
+        $objects = Get-CohesityAlert -MaxAlerts $alerts -AlertStates kOpen
     } 
     catch {
         New-PoshBotCardResponse -Type Normal -Text ("❗" | Format-List | Out-String)
@@ -74,11 +75,16 @@ function Get-PBCohesityAlerts {
         if ($value -eq "KCritical}") { $critical = $critical + 1 }
         if ($value -eq "KWarning}") { $warning = $warning + 1 } }
 
-    $ResponseSplat = @{
-        Text   = Format-PBCohesityObject -Object $objects -FunctionName $MyInvocation.MyCommand.Name
-        AsCode = $true
-    }
-    New-PoshBotTextResponse @ResponseSplat
+    foreach ($i in $objects) {
+        $temp =  $i.latestTimestampUsecs
+        $format_time = Convert-CohesityUsecsToDateTime -Usecs $temp
+        $description =  $i.alertDocument.alertDescription
+        $i | Add-Member -MemberType ScriptProperty -Name "Description" -Value { $description }
+        $format_time = Convert-CohesityUsecsToDateTime -Usecs $temp
+        $i | Add-Member -MemberType ScriptProperty -Name "LatestTime" -Value { $format_time }
+        $obj = $i | Select-Object -Property Description, Id, AlertCategory, Severity, LatestTime, AlertDocument
+        New-PoshBotCardResponse -Text ($obj | Format-List | Out-String)
+        }
     if ($critical -gt 0) {
         New-PoshBotCardResponse -Type Normal -Text ("❌" | Format-List | Out-String)
     }

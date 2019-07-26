@@ -4,7 +4,7 @@ function to call Cohesity API
 .DESCRIPTION
 Start protection job
 .EXAMPLE
-start cohesity protection job named protect
+start cohesity protection job protect
 Description
 -----------
 outputs if protection job has started
@@ -13,7 +13,7 @@ function Get-PBCohesityStartJob {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)start\scohesity\sprotection\sjob\snamed\s(.*)'
+        Regex = '(?i)start\scohesity\sprotection\sjob\s(.*)'
     )]
     [CmdletBinding()]
     param(

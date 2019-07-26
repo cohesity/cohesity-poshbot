@@ -4,7 +4,7 @@ function to call Cohesity API
 .DESCRIPTION
 Stop portection job
 .EXAMPLE
-stop Cohesity protection job named protect
+stop Cohesity protection job protect
 Description
 -----------
 outputs if portection job was stopped
@@ -13,7 +13,7 @@ function Get-PBCohesityStopJob {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
-        Regex = '(?i)stop\scohesity\sprotection\sjob\snamed\s(.*)'
+        Regex = '(?i)stop\scohesity\sprotection\sjob\s(.*)'
     )]
     [CmdletBinding()]
     param(

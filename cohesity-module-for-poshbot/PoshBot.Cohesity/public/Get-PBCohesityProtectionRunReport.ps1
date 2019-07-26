@@ -4,7 +4,7 @@ function to call Cohesity API
 .DESCRIPTION
 Create a protection run graph
 .EXAMPLE
-get cohesity protection run graph
+get cohesity protection run report
 Description
 -----------
 outputs new created graph

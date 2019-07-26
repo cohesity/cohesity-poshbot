@@ -59,15 +59,15 @@ function Get-PBCohesityHelp {
         @{ Output = "get resolved alerts with max number inputed"; Command = "get cohesity max resolved alerts $"}) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
     New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
     $yourData = @(
-        @{Output = "resume a protection job"; Command = "resume cohesity protection job named $" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+        @{Output = "resume a protection job with name"; Command = "resume cohesity protection job $" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
     New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
 
     $yourData = @(
-        @{ Output = "start a protection job"; Command = "start cohesity protection job named $" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+        @{ Output = "start a protection job with name"; Command = "start cohesity protection job $" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
      New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
 
     $yourData = @(
-        @{ Output = "stop protection job";Command = "stop cohesity protection job named $" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+        @{ Output = "stop protection job with name";Command = "stop cohesity protection job $" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
     New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
 
     $yourData = @(
