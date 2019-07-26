@@ -77,7 +77,7 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
 | `get cohesity ip` | list Cohesity clusters available indicated by numbers from 1 >|
 | `create cohesity protection job named $, policy name $, storage domain name $, environment $, vmware vm name $, view name $` | create protection job if no `view name` input `na`, if no `vmware vm name` input `na`|
 | `get cohesity protection job named $` | get info on protection job indicated by name|
-| `get cohesity protection runs graph` | outputs a graph indicating passed and failed runs|
+| `get cohesity protection runs report` | outputs a graph indicating passed and failed runs|
 | `get cohesity max resolved alerts $` | get resolved alerts with max number inputed|
 | `resume cohesity protection job named $` | resume a protection job|
 | `start cohesity protection job named $` | start a protection job|
