@@ -22,7 +22,7 @@ function Format-PBCohesityObject {
             'Get-PBCohesityStopJob.ps1' {$msg -f 'stop job' }
             'Get-PBCohesityResumeJob.ps1' {$msg -f 'resume job' }
             'Get-PBCohesityClusters.ps1' {$msg -f 'all cluster ip addresses' }
-            'Get-PBCohesityProtectionRunGraph.ps1' {$msg -f 'protection run graph' }
+            'Get-PBCohesityProtectionRunReport.ps1' {$msg -f 'protection run graph' }
             'Get-PBCohesityChangeCluster.ps1' {$msg -f 'change cluster' }
             'Get-PBCohesityHelp.ps1' {$msg -f 'command help' }
             'Get-PBCohesityResolveAlerts.ps1' {$msg -f 'resolve alerts' }
