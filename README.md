@@ -7,9 +7,8 @@
 3. Commands are excecuted in Powershell 
 4. REST API calls made through Cohesity Powershell module
 5. Powershell output recieved by using Cohesity Powershell module 
-6. Output is manipulated through Powershell in JSON format
-7. Output is created in Poshbot as a custom response
-8. Output is formatted and is displayed in Slack through Poshbot call
+6. Output is created in Poshbot as a custom response
+7. Output is formatted and is displayed in Slack through Poshbot call
 
 # Get Started 
 Link to how to setup and get Poshbot running 
