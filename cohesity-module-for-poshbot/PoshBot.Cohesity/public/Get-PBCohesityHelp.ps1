@@ -74,6 +74,10 @@ function Get-PBCohesityHelp {
         @{ Output = "get info on Cohesity user"; Command = "get cohesity user" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
     New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
     $yourData = @(
+        @{ Output = "get Cohesity cluster usage information"; Command = "get cohesity usage" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
+    New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
+
+    $yourData = @(
         @{ Output = "resolve Cohesity alert"; Command = "resolve cohesity alert id $ with message: $" }) | % { New-Object object | Add-Member -NotePropertyMembers $_ -PassThru }
     New-PoshBotCardResponse -Text ($yourData | Format-List -Property * | Out-String -Width 120)
 
