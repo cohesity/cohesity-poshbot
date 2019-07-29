@@ -72,7 +72,6 @@ function Get-PBCohesityUsage {
 
     }
 
-
     $path_py = $path + '/pie_chart.py'
     $path_png = $path + '/pie_chart.png'
     $used = [string]$used
