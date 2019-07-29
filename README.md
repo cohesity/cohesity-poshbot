@@ -3,8 +3,7 @@
 ![Cohesity Poshbot Diagram](Diagram.png)
 
 1. Set up configuration of Poshbot on Windows environment 
-2. From Slack type in commands 
-3. Commands get sent to Poshbot from slack
+2.Commands get sent to Poshbot from slack
 4. Commands are excecuted in Powershell 
 5. Powershell output recieved by using Cohesity Powershell module through REST API calls
 6. Output is manipulated through Powershell in JSON format
