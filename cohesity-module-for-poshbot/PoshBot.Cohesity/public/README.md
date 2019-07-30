@@ -19,8 +19,8 @@ If Poshbot is not already installed and running on Slack reffer to documentation
 1. Clone the `cohesity-module-for-poshbot` directory in the `$env:PSModulePath` directory on your Linux server (it should be the path starting from the home directory) 
 
 2. Next configure Poshbot with credentials (i.e password, username, and full path) 
-  * To do this visit [link](http://docs.poshbot.io/en/latest/guides/configuration/) and create a default configuration in `/cohesity-module-for-poshbot/PoshBot.Cohesity/public` 
-  * Path is path to repo to find this type `pwd`
+  * To do this visit [link](http://docs.poshbot.io/en/latest/guides/configuration/) and create a default configuration in `/cohesity-module-for-poshbot/PoshBot.Cohesity/public` path
+  * `Path` is path to repo to find this type `pwd`
   * In the newly created `PoshBotConfig.psd1` file under `PluginConfiguration` create a new section called `PoshBot.Cohesity`, using the following format: 
   ```
   @{
@@ -57,7 +57,7 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
   ```
   Once in slack use the command `!install-plugin PoshBot.Cohesity` to install commands 
   
-  2. The last step is to configure the cluster to get info on, use `get cohesity clusters` and `change cohesity cluster to _` to do this. 
+  2. The last step is to configure the cluster to get info, use `get cohesity clusters` and `change cohesity cluster to _` commands to do this. 
   * Whenever needed you can switch clusters in order to monitor different clusters 
   
   # Commands 
