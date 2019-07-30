@@ -19,7 +19,7 @@ If Poshbot is not already installed and running on Slack reffer to documentation
 1. Clone the `cohesity-module-for-poshbot` directory in the `$env:PSModulePath` directory on your Linux server (it should be the path starting from the home directory) 
 
 2. Next configure Poshbot with credentials (i.e password, username, and full path) 
-  * To do this visit [http://docs.poshbot.io/en/latest/guides/configuration/] and create a default configuration in [/cohesity-module-for-poshbot/PoshBot.Cohesity/public] 
+  * To do this visit [http://docs.poshbot.io/en/latest/guides/configuration/] and create a default configuration in `/cohesity-module-for-poshbot/PoshBot.Cohesity/public` 
   * Path is path to repo to find this type `pwd`
   * In the newly created `PoshBotConfig.psd1` file under `PluginConfiguration` create a new section called `PoshBot.Cohesity`, using the following format: 
   ```
