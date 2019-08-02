@@ -10,7 +10,6 @@ import numpy as np
 
 def graph(stat, hour, current, path):
     hour = hour.split(",")
-
     current_t = current.replace("AM", "")
     if current_t != current:
         current_t = int(current_t)
@@ -26,19 +25,28 @@ def graph(stat, hour, current, path):
     running = [0] * N
     total_time = current_t
     time_line = [0] * N
+    total_times = total_time
     time_tt = [0] * N
     for i in range(N):
-        total_time = total_time - 1
-        if (total_time < 0):
-            temp = total_time + 24
+        total_times = total_times - 1
+        if (total_times < 0):
+            time_tt[i] = total_times + 1
+        if (total_times == 0):
+            time_tt[i] = total_times + 1
+        if (total_times > 0):
+            time_tt[i] = total_times + 1
+    start_times = total_time
+    for i in range(N):
+        if (start_times < 0):
+            temp = start_times + 24
             time_line[i] = temp
-            time_tt[i] = total_time + 1
-        if (total_time == 0):
+        if (start_times == 0):
             time_line[i] = 24
-            time_tt[i] = total_time + 1
-        if (total_time > 0):
-            time_line[i] = total_time
-            time_tt[i] = total_time + 1
+
+        if (start_times > 0):
+            time_line[i] = start_times
+        start_times = start_times - 1
+
     time_tt.reverse()
     time_line.reverse()
     num = 0

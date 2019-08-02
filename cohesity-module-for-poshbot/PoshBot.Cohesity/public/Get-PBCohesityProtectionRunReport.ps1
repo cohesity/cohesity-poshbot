@@ -10,7 +10,7 @@ Description
 outputs new created graph
 #>
 
-function Get-PBCohesityProtectionRunGraph {
+function Get-PBCohesityProtectionRunReport {
     [PoshBot.BotCommand(
         Command = $false,
         TriggerType = 'regex',
@@ -96,8 +96,9 @@ function Get-PBCohesityProtectionRunGraph {
     $current_standard = $current_h.ToString("HHtt")
     $current_hour = [int]$current_hour
     $current_hour = [string]$current_hour
-    $past_day = $current_time - 86400000000
+    $past_day = $current_time - 80964000000
     $compare_day = $past_day - 3600
+
     try {
         $objects = Get-CohesityProtectionJobRun -StartedTime $past_day
     }
@@ -114,6 +115,7 @@ function Get-PBCohesityProtectionRunGraph {
     $end_time = @()
     foreach ($i in $objects) {
         if ($i.copyRun.runStartTimeUsecs -gt $compare_day) {
+
             $status += [String]$i.backupRun.status + ','
             try {
                 $hours = Convert-CohesityUsecsToDateTime -Usecs $i.copyRun.runStartTimeUsecs
