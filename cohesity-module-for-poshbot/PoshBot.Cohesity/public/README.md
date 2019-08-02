@@ -6,6 +6,7 @@ How to run Poshbot Cohesity commands
 * [Configuration in Poshbot](#configuration-in-poshbot)
 * [Configuration in Config json](#configuration-in-config-json)
 * [Configure on Slack](#configure-on-slack)
+* [Configuration on Teams](#configuration-on-teams)
 * [Commands](#commands)
 
 # Prerequisites 
@@ -59,6 +60,9 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
   2. The last step is to configure the cluster to get info, use `get cohesity clusters` and `change cohesity cluster to _` commands to do this. 
   * Whenever needed you can switch clusters in order to monitor different clusters 
   
+# Configuration on Teams
+1. Follow instruction on [link](https://poshbot.readthedocs.io/en/latest/guides/backends/setup-teams-backend/)
+
   # Commands 
   
   To get information on commands use `get cohesity help` to get info or `!help command -Full` (e.g `!help Get-PBCohesityAlerts -Full`) for full info on use.
