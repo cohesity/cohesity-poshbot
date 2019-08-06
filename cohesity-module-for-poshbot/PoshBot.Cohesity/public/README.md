@@ -2,21 +2,21 @@
 How to run Poshbot Cohesity commands
 # Quick Start Guide
 
-* [Prerequisites](#prerequisites)
-* [Configuration in Poshbot](#configuration-in-poshbot)
-* [Configuration in Config json](#configuration-in-config-json)
-* [Configure on Slack](#configure-on-slack)
-* [Configuration on Teams](#configuration-on-teams)
-* [Commands](#commands)
+* [Prerequisites](#1.-prerequisites)
+* [Configuration in Poshbot](#2.-configuration-in-poshbot)
+* [Configuration in Config json](#3.-configuration-in-config-json)
+* [Configure on Slack](#4.-configure-on-slack)
+* [Configuration on Teams](#5.-configuration-on-teams)
+* [Commands](#6.-commands)
 
-# Prerequisites 
+# 1. Prerequisites 
 * [Cohesity Powershell Module](https://cohesity.github.io/cohesity-powershell-module/)
 
 If Poshbot is not already installed and running on Slack reffer to documentation: 
   * [PoshBot Project](https://github.com/poshbotio/PoshBot)
   * [PoshBot Documentation](https://poshbot.readthedocs.io/en/latest/)
 
-# Configuration in Poshbot
+# 2. Configuration in Poshbot
 1. Clone the `cohesity-module-for-poshbot` directory in the `$env:PSModulePath` directory on your Linux server (it should be the path starting from the home directory) 
 
 2. Next configure Poshbot with credentials (i.e password, username, and full path). To do this visit [link](http://docs.poshbot.io/en/latest/guides/configuration/) and create a default configuration in `/cohesity-module-for-poshbot/PoshBot.Cohesity/public` path
@@ -34,7 +34,7 @@ If Poshbot is not already installed and running on Slack reffer to documentation
     }
 }
   ```
-# Configuration in Config json
+# 3. Configuration in Config json
 In Cluster-Config.json file simply enter the clusters you want to monitor in this format: 
 ```
 {
@@ -46,7 +46,7 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
 }
 ```
 
- # Configuration on Slack 
+ # 4. Configuration on Slack 
  
   1. To run Poshbot with configuration use the following commands: 
   ```
@@ -60,10 +60,10 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
   2. The last step is to configure the cluster to get info, use `get cohesity clusters` and `change cohesity cluster to _` commands to do this. 
   * Whenever needed you can switch clusters in order to monitor different clusters 
   
-# Configuration on Teams
+# 5. Configuration on Teams
 1. Follow instruction on [link](https://poshbot.readthedocs.io/en/latest/guides/backends/setup-teams-backend/)
 
-  # Commands 
+  # 6. Commands 
   
   To get information on commands use `get cohesity help` to get info or `!help command -Full` (e.g `!help Get-PBCohesityAlerts -Full`) for full info on use.
   
