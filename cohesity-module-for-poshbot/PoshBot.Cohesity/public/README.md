@@ -46,7 +46,7 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
 }
 ```
 
- # Configure on Slack 
+ # Configuration on Slack 
  
   1. To run Poshbot with configuration use the following commands: 
   ```
