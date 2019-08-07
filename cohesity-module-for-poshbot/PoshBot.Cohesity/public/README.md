@@ -2,8 +2,8 @@
 How to run Poshbot Cohesity commands
 # Quick Start Guide
 
-* [Prerequisites](#1.prerequisites)
-* [Configuration in Poshbot](#2.-configuration-in-poshbot)
+* [Prerequisites](#prerequisites)
+* [Configuration in Poshbot](#configuration-in-poshbot)
 * [Configuration in Config json](#3.-configuration-in-config-json)
 * [Configure on Slack](#4.-configure-on-slack)
 * [Configuration on Teams](#5.-configuration-on-teams)
