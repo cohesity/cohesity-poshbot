@@ -9,7 +9,7 @@ How to run Poshbot Cohesity commands
 * [Configuration on Teams](#5.-configuration-on-teams)
 * [Commands](#6.-commands)
 
-# 1. Prerequisites 
+# Prerequisites 
 * [Cohesity Powershell Module](https://cohesity.github.io/cohesity-powershell-module/)
 
 If Poshbot is not already installed and running on Slack reffer to documentation: 
