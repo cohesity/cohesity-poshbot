@@ -3,10 +3,11 @@
 Cohesity Poshbot is a bot that uses the Poshbot framework to make Cohesity API calls in Slack or Teams
 
 # 2. Use Cases 
-* Slack 
+## Slack 
 ![](slack.gif)
 
-* Microsoft Teams 
+## Microsoft Teams 
+
 ![](teams.gif)
 
 # 3. Features 
