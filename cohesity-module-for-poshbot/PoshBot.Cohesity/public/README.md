@@ -56,7 +56,7 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
   ```
   Once in Slack use the command `!install-plugin PoshBot.Cohesity` to install commands 
   
-  2. The last step is to configure the cluster to get info, use `get cohesity clusters` and `change cohesity cluster to _` commands to do this. 
+  2. The last step is to configure the cluster to get info, use `get cohesity clusters` and `change cohesity cluster to $` commands to do this. 
   * Whenever needed you can switch clusters in order to monitor different clusters 
   
 # 4.2 Teams
