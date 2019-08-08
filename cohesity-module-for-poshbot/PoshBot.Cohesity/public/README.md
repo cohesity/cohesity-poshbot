@@ -84,6 +84,7 @@ $bot.Start()
   ```
  3. Once in Teams you can call the bot using `@<Bot-Name> <command>`
  
+ * `get cohesity protection runs report` and `get cohesity usage` does not work in Teams 
   # 5. Commands 
   
   To get information on commands use `get cohesity help` to get info or `!help command -Full` (e.g `!help Get-PBCohesityAlerts -Full`) for full info on use.
