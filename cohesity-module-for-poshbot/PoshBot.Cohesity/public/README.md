@@ -5,13 +5,13 @@ How to run Poshbot Cohesity commands
 * [Prerequisites](#1-prerequisites)
 * [Configuration in Poshbot](#2-configuration-in-poshbot)
 * [Configuration in Config json](#3-configuration-in-config-json)
-* [Configure on Team / Slack](#4-configuration-on-slack-and/or-teams)
+* [Configure on Team / Slack](#4-configuration-on-slack-and-or-teams)
 * [Commands](#5-commands)
 
 # 1. Prerequisites 
 * [Cohesity Powershell Module](https://cohesity.github.io/cohesity-powershell-module/)
 
-If Poshbot is not already installed and running on Slack reffer to documentation: 
+If Poshbot is not already installed and running on Slack refer to documentation: 
   * [PoshBot Project](https://github.com/poshbotio/PoshBot)
   * [PoshBot Documentation](https://poshbot.readthedocs.io/en/latest/)
 
@@ -44,7 +44,7 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
 
 }
 ```
- # 4. Configuration on Slack and/or Teams 
+ # 4. Configuration on Slack and or Teams 
  # 4.1 Slack 
  
   1. To run Poshbot with configuration use the following commands in `public` directory: 
