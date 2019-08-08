@@ -54,7 +54,7 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
   $bot = New-PoshBotInstance -Configuration $pbc -Backend $backend 
   $bot.Start() 
   ```
-  Once in slack use the command `!install-plugin PoshBot.Cohesity` to install commands 
+  Once in Slack use the command `!install-plugin PoshBot.Cohesity` to install commands 
   
   2. The last step is to configure the cluster to get info, use `get cohesity clusters` and `change cohesity cluster to _` commands to do this. 
   * Whenever needed you can switch clusters in order to monitor different clusters 
@@ -62,8 +62,28 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
 # 4.2 Teams
 1. Follow instruction on [link](https://poshbot.readthedocs.io/en/latest/guides/backends/setup-teams-backend/)
 2. Once you get to `Create a PoshBot Startup Script` follow these steps: 
-  a. run the follwing commands 
-
+  a. run the following commands :
+  ```
+  $pbc = Get-PoshBotConfiguration -Path .\PoshBotConfig.psd1
+  $pbc.BotAdmins = @('<AAD-USER-PRINCIPAL-NAME>')
+  $backendConfig = @{
+    Name                = 'TeamsBackend'
+    BotName             = '<BOT-NAME>'
+    TeamId              = '<TEAMS-ID>'
+    ServiceBusNamespace = '<SERVICE-BUS-NAMESPACE-NAME>'
+    QueueName           = 'messages'
+    AccessKeyName       = 'receive'
+    AccessKey           = '<SAS-KEY>' | ConvertTo-SecureString -AsPlainText -Force
+    Credential          = [pscredential]::new(
+        '<BOT-APP-ID>',
+        ('<BOT-APP-PASSWORD>' | ConvertTo-SecureString -AsPlainText -Force)
+    )
+}
+$backend = New-PoshBotTeamsBackend -Configuration $backendConfig 
+$bot.Start()     
+  ```
+ 3. Once in Teams you can call the bot using `@<Bot-Name> <command>`
+ 
   # 5. Commands 
   
   To get information on commands use `get cohesity help` to get info or `!help command -Full` (e.g `!help Get-PBCohesityAlerts -Full`) for full info on use.
