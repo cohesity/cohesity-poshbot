@@ -47,7 +47,6 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
  # 4. Configuration on Slack and or Teams 
  # 4.1 Slack 
  
- ![](slack_config.gif)
 
   1. To run Poshbot with configuration use the following commands in `public` directory: 
   ```
@@ -63,7 +62,6 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
   
 # 4.2 Teams
 
-![](team_config.gif)
 
 1. Follow instruction on [link](https://poshbot.readthedocs.io/en/latest/guides/backends/setup-teams-backend/)
 2. Once you get to `Create a PoshBot Startup Script` follow these steps: 
