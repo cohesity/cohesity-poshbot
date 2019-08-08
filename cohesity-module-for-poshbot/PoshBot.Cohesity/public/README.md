@@ -80,6 +80,7 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
     )
 }
 $backend = New-PoshBotTeamsBackend -Configuration $backendConfig 
+$bot = New-PoshBotInstance -Configuration $pbc -Backend $backend 
 $bot.Start()     
   ```
  3. Once in Teams you can call the bot using `@<Bot-Name> <command>`
