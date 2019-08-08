@@ -2,12 +2,12 @@
 How to run Poshbot Cohesity commands
 # Quick Start Guide
 
-* [Prerequisites](#-1.-prerequisites)
-* [Configuration in Poshbot](#configuration-in-poshbot)
-* [Configuration in Config json](#3.-configuration-in-config-json)
-* [Configure on Slack](#4.-configure-on-slack)
+* [Prerequisites](#1-prerequisites)
+* [Configuration in Poshbot](#2-configuration-in-poshbot)
+* [Configuration in Config json](#3-configuration-in-config-json)
+* [Configure on Slack](#4-configure-on-slack-and/or-teams)
 * [Configuration on Teams](#5.-configuration-on-teams)
-* [Commands](#6.-commands)
+* [Commands](#6-commands)
 
 # 1. Prerequisites 
 * [Cohesity Powershell Module](https://cohesity.github.io/cohesity-powershell-module/)
@@ -45,10 +45,10 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
 
 }
 ```
-
- # 4. Configuration on Slack 
+ # 4. Configuration on Slack and/or Teams 
+ # 4.1 Slack 
  
-  1. To run Poshbot with configuration use the following commands: 
+  1. To run Poshbot with configuration use the following commands in `public` directory: 
   ```
   $pbc = Get-PoshBotConfiguration -Path .\PoshBotConfig.psd1 
   $backend = New-PoshBotSlackBackend -Configuration $pbc.BackendConfiguration
@@ -60,10 +60,12 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
   2. The last step is to configure the cluster to get info, use `get cohesity clusters` and `change cohesity cluster to _` commands to do this. 
   * Whenever needed you can switch clusters in order to monitor different clusters 
   
-# 5. Configuration on Teams
+# 4.2 Teams
 1. Follow instruction on [link](https://poshbot.readthedocs.io/en/latest/guides/backends/setup-teams-backend/)
+2. Once you get to `Create a PoshBot Startup Script` follow these steps: 
+  a. run the follwing commands 
 
-  # 6. Commands 
+  # 5. Commands 
   
   To get information on commands use `get cohesity help` to get info or `!help command -Full` (e.g `!help Get-PBCohesityAlerts -Full`) for full info on use.
   
