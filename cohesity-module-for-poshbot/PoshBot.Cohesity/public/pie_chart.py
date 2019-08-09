@@ -35,7 +35,6 @@ def graph(used, available, path):
     plt.savefig(
         path_png)
 
-
 if __name__ == "__main__":
     arg1 = sys.argv[1]
     arg2 = sys.argv[2]

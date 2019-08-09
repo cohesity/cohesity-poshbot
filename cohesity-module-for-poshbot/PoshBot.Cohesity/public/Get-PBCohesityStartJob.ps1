@@ -56,7 +56,7 @@ function Get-PBCohesityStartJob {
 
     $job = $Arguments[1]
     try {
-    $objects = Start-CohesityProtectionJob -Name $job
+        $objects = Start-CohesityProtectionJob -Name $job
     
     }
     catch {

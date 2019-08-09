@@ -58,7 +58,7 @@ function Get-PBCohesityStopJob {
  
     try {
        
-    $objects = Stop-CohesityProtectionJob -Name $job
+        $objects = Stop-CohesityProtectionJob -Name $job
   
     }
     catch {

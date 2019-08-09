@@ -76,15 +76,15 @@ function Get-PBCohesityAlerts {
         if ($value -eq "KWarning}") { $warning = $warning + 1 } }
 
     foreach ($i in $objects) {
-        $temp =  $i.latestTimestampUsecs
+        $temp = $i.latestTimestampUsecs
         $format_time = Convert-CohesityUsecsToDateTime -Usecs $temp
-        $description =  $i.alertDocument.alertDescription
+        $description = $i.alertDocument.alertDescription
         $i | Add-Member -MemberType ScriptProperty -Name "Description" -Value { $description }
         $format_time = Convert-CohesityUsecsToDateTime -Usecs $temp
         $i | Add-Member -MemberType ScriptProperty -Name "LatestTime" -Value { $format_time }
         $obj = $i | Select-Object -Property Description, Id, AlertCategory, Severity, LatestTime, AlertDocument
         New-PoshBotCardResponse -Text ($obj | Format-List | Out-String)
-        }
+    }
     if ($critical -gt 0) {
         New-PoshBotCardResponse -Type Normal -Text ("❌" | Format-List | Out-String)
     }

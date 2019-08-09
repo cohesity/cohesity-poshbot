@@ -96,6 +96,7 @@ function Get-PBCohesityProtectionRunReport {
     $current_standard = $current_h.ToString("HHtt")
     $current_hour = [int]$current_hour
     $current_hour = [string]$current_hour
+    # protection runs in the past 23 hours
     $past_day = $current_time - 80964000000
     $compare_day = $past_day - 3600
 

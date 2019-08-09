@@ -26,30 +26,32 @@ def graph(stat, hour, current, path):
     total_time = current_t
     time_line = [0] * N
     total_times = total_time
-    time_tt = [0] * N
+    timeline_past = [0] * N
+    # list of times in past 23 hours
     for i in range(N):
         total_times = total_times - 1
         if (total_times < 0):
-            time_tt[i] = total_times + 1
+            timeline_past[i] = total_times + 1
         if (total_times == 0):
-            time_tt[i] = total_times + 1
+            timeline_past[i] = total_times + 1
         if (total_times > 0):
-            time_tt[i] = total_times + 1
+            timeline_past[i] = total_times + 1
     start_times = total_time
+    # list of times in 24 hour format 
     for i in range(N):
         if (start_times < 0):
             temp = start_times + 24
             time_line[i] = temp
         if (start_times == 0):
             time_line[i] = 24
-
         if (start_times > 0):
             time_line[i] = start_times
         start_times = start_times - 1
 
-    time_tt.reverse()
+    timeline_past.reverse()
     time_line.reverse()
     num = 0
+    # number of failed, succesful, cancelled, and accepted runs
     for i in stat:
         if stat[num] == 'KFailure':
             fail[time_line.index(hour[num])] += 1
@@ -60,13 +62,14 @@ def graph(stat, hour, current, path):
         if stat[num] == 'KAccepted':
             running[time_line.index(hour[num])] += 1
         num += 1
-    plt.bar(time_tt, success, color='g',
+    # plot values
+    plt.bar(timeline_past, success, color='g',
             align='center', label='success')
-    plt.bar(time_tt, fail, color='r', bottom=success,
+    plt.bar(timeline_past, fail, color='r', bottom=success,
             align='center', label='failed')
-    plt.bar(time_tt, cancel, color='#FF8D33', bottom=fail,
+    plt.bar(timeline_past, cancel, color='#FF8D33', bottom=fail,
             align='center', label='canceled')
-    plt.bar(time_tt, running, color='#3358FF', bottom=cancel,
+    plt.bar(timeline_past, running, color='#3358FF', bottom=cancel,
             align='center', label='running')
     plt.legend(loc='upper left')
     plt.ylabel('number of protection runs')
@@ -76,11 +79,12 @@ def graph(stat, hour, current, path):
     x_axis = []
     x_coor = []
     count = 0
+    # plot x axis times
     for i in combined:
         if(i != 0):
             x = count
             time = int(time_line[x])
-            x_coor.append(time_tt[x])
+            x_coor.append(timeline_past[x])
             if (0 < time < 12):
                 temp = str(time) + 'am'
             if (time > 12):

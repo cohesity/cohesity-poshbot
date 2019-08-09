@@ -83,15 +83,15 @@ function Get-PBCohesityLatestAlert {
 
     }
     foreach ($i in $objects) {
-        $temp =  $i.latestTimestampUsecs
+        $temp = $i.latestTimestampUsecs
         if ($i.latestTimestampUsecs -gt $past_day) {
             $format_time = Convert-CohesityUsecsToDateTime -Usecs $temp
-            $description =  $i.alertDocument.alertDescription
+            $description = $i.alertDocument.alertDescription
             $i | Add-Member -MemberType ScriptProperty -Name "Description" -Value { $description } 
             $format_time = Convert-CohesityUsecsToDateTime -Usecs $temp
             $i | Add-Member -MemberType ScriptProperty -Name "LatestTime" -Value { $format_time }
-           $obj = $i | Select-Object -Property Description, Id, AlertCategory, Severity, LatestTime, AlertDocument
-        New-PoshBotCardResponse -Text ($obj | Format-List | Out-String)
+            $obj = $i | Select-Object -Property Description, Id, AlertCategory, Severity, LatestTime, AlertDocument
+            New-PoshBotCardResponse -Text ($obj | Format-List | Out-String)
         }
     }
 
