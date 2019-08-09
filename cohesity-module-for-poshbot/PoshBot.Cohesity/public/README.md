@@ -67,7 +67,7 @@ In Cluster-Config.json file simply enter the clusters you want to monitor in thi
 
 1. Follow instruction on [link](https://poshbot.readthedocs.io/en/latest/guides/backends/setup-teams-backend/)
 2. Once you get to `Create a PoshBot Startup Script` follow these steps: 
-  a. run the following commands :
+  Run the following commands :
   ```
   $pbc = Get-PoshBotConfiguration -Path .\PoshBotConfig.psd1
   $pbc.BotAdmins = @('<AAD-USER-PRINCIPAL-NAME>')
