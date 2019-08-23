@@ -1,4 +1,4 @@
-# Beta Cohesity Poshbot 
+# Cohesity Poshbot - Beta
 # 1. Overview
 Cohesity Poshbot is a bot that uses the Poshbot framework to make Cohesity API calls in Slack or Teams
 
