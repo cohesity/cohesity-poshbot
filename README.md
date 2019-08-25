@@ -1,6 +1,6 @@
 # Cohesity Poshbot - Beta
 # 1. Overview
-Cohesity Poshbot is a bot that uses the Poshbot framework to make Cohesity API calls in Slack or Teams
+Cohesity chatbot uses the Poshbot framework to perform Cohesity actions in Slack or Microsoft Teams
 
 # 2. Use Cases 
 ## Slack 
@@ -11,11 +11,11 @@ Cohesity Poshbot is a bot that uses the Poshbot framework to make Cohesity API c
 ![](teams1.gif)
 
 # 3. Features 
-Cohesity Poshbot can be used for : 
+Cohesity Poshbot can be used for: 
 * Get commands
-* Create Cohesity protection job 
-* Output Cohesity protection runs graph
-* Resume/ Stop/ Start Cohesity job 
+* Create a Cohesity protection job 
+* Get Cohesity protection runs graph
+* Resume/ Stop/ Start a Cohesity protection job 
 * Resolve Cohesity alerts 
 
 # 4. Process Overview
